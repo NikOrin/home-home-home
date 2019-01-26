@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 7426613496462476059}
   - component: {fileID: 7101808593541758600}
   m_Layer: 5
-  m_Name: MessageApp
+  m_Name: MessagesAppObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -186,3 +186,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51a82b779f0b14bb5832651b25ea04f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MessageThreadPrefab: {fileID: 7618223611905222071, guid: 83b8e6514e9a64c9694c7f3e95abc735,
+    type: 3}
