@@ -14,12 +14,13 @@ public class HomeScreenController : MonoBehaviour
     {
         var buttonObject = Instantiate(GenericAppIcon);
         var button = buttonObject.GetComponent<Button>();
-        button.onClick.AddListener(Test);
+        button.onClick.AddListener(() => Test(button));
         buttonObject.transform.SetParent(transform);
         var btnRect = buttonObject.GetComponent<RectTransform>();
-        Debug.Log($"position: {btnRect.position}");
-        Debug.Log($"local position: {btnRect.localPosition}");
         btnRect.localPosition = Vector3.zero;
+
+        var text = buttonObject.transform.Find("Text").GetComponent<Text>();
+        text.text = "Message App";
         Apps.Add(button);
     }
 
@@ -28,8 +29,11 @@ public class HomeScreenController : MonoBehaviour
     {
     }
 
-    private void Test()
+    private void Test(Button b)
     {
         Debug.Log("Test button was clicked");
+        b.GetComponent<OpensApp>().OpenAppCanvas();
+
+        gameObject.SetActive(false);
     }
 }
