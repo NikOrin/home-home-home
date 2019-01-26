@@ -9,6 +9,8 @@ public class HomeScreenController : MonoBehaviour
     public List<string> Apps;
     public GameObject GenericAppButtonPrefab;
 
+    public GameObject StoryController;
+
     //Used for the offset from the edge of the top for the battery bar
     public int TopMargin = 60;
     //used for the offset from the bottom edge of the screen (for the home button)
@@ -37,13 +39,13 @@ public class HomeScreenController : MonoBehaviour
             var btnRect = buttonObject.GetComponent<RectTransform>();
             btnRect.localPosition = new Vector3(columnPointer, rowPointer, 0);
 
-            rowPointer -= (height + ButtonMargins);
+            //rowPointer -= (height + ButtonMargins);
             columnPointer += (width + ButtonMargins);
 
-            button.GetComponent<OpensApp>().AppCanvas = appFactory.MessageAppCanvas;
+            button.GetComponent<OpensApp>().AppCanvas = appFactory.GetAppCanvas(app).AppCanvas;
 
             var text = buttonObject.transform.Find("Text").GetComponent<Text>();
-            text.text = "Message App";
+            text.text = app;
         }
 
     }
