@@ -5,33 +5,46 @@ using UnityEngine.UI;
 
 public class HomeScreenController : MonoBehaviour
 {
-    public List<Button> Apps;
-
-    public GameObject GenericAppIcon;
+    //public List<Button> Apps;
+    public List<string> Apps;
+    public GameObject GenericAppButtonPrefab;
 
     //Used for the offset from the edge of the top for the battery bar
-    public int TopMargin;
+    public int TopMargin = 60;
     //used for the offset from the bottom edge of the screen (for the home button)
     public int BottomMargin;
     public int ButtonMargins;
+
 
     // Start is called before the first frame update
     void Start()
     {
         var appFactory = transform.Find("AppFactoryObject").GetComponent<AppFactory>();
 
-        var buttonObject = Instantiate(GenericAppIcon);
-        var button = buttonObject.GetComponent<Button>();
-        button.onClick.AddListener(() => Test(button));
-        buttonObject.transform.SetParent(transform);
-        var btnRect = buttonObject.GetComponent<RectTransform>();
-        btnRect.localPosition = Vector3.zero;
+        int height = (int)GenericAppButtonPrefab.GetComponent<RectTransform>().rect.height;
+        int rowPointer = Screen.height / 2 - TopMargin - height/2;
 
-        button.GetComponent<OpensApp>().AppCanvas = appFactory.MessageAppCanvas;
+        int width = (int)GenericAppButtonPrefab.GetComponent<RectTransform>().rect.width;
+        int columnPointer = -Screen.width / 2 + ButtonMargins / 2 + width/2;
 
-        var text = buttonObject.transform.Find("Text").GetComponent<Text>();
-        text.text = "Message App";
-        Apps.Add(button);
+
+        foreach(var app in Apps)
+        {
+            var buttonObject = Instantiate(GenericAppButtonPrefab);
+            var button = buttonObject.GetComponent<Button>();
+            button.onClick.AddListener(() => Test(button));
+            buttonObject.transform.SetParent(transform);
+            var btnRect = buttonObject.GetComponent<RectTransform>();
+            btnRect.localPosition = new Vector3(columnPointer, rowPointer, 0);
+
+            rowPointer -= (height + ButtonMargins);
+            columnPointer += (width + ButtonMargins);
+
+            button.GetComponent<OpensApp>().AppCanvas = appFactory.MessageAppCanvas;
+
+            var text = buttonObject.transform.Find("Text").GetComponent<Text>();
+            text.text = "Message App";
+        }
 
     }
 

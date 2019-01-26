@@ -157,7 +157,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227e86dc009ce45a6ba9f4c42aa95182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Apps: []
-  GenericAppIcon: {fileID: 8578269785595427955, guid: 25f22074863e8430e9bbf69ac15cc3af,
+  Apps:
+  - 
+  GenericAppButtonPrefab: {fileID: 8578269785595427955, guid: 25f22074863e8430e9bbf69ac15cc3af,
     type: 3}
+  TopMargin: 60
+  BottomMargin: 0
   ButtonMargins: 0
