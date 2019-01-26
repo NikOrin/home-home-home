@@ -9,8 +9,10 @@ public class HomeScreenController : MonoBehaviour
 
     public GameObject GenericAppIcon;
 
-    ///Used for the offset from the edge of the top for the battery bar
+    //Used for the offset from the edge of the top for the battery bar
     public int TopMargin;
+    //used for the offset from the bottom edge of the screen (for the home button)
+    public int BottomMargin;
     public int ButtonMargins;
 
     // Start is called before the first frame update
