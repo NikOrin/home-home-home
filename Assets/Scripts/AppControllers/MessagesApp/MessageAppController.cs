@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using Application.Messages;
 using UnityEngine;
+using System;
 
-public class MessageAppController : MonoBehaviour
+public class MessageAppController : BaseAppController
 {
     public List<MessageThread> MessageThreads;
     public GameObject MessageThreadPrefab;
+
+    public int Margin;
 
     // Start is called before the first frame update
     void Start()
@@ -14,7 +17,10 @@ public class MessageAppController : MonoBehaviour
         //Get messages information from story controller
         //test method for building fake data for now;
         BuildDummyData();
-        Debug.Log("You've opened the messages app");
+
+        int height = (int)MessageThreadPrefab.GetComponent<RectTransform>().rect.height;
+        int rowPointer = Screen.height/2 - TopMargin - height/2;
+
 
         foreach (var messageThread in MessageThreads)
         {
@@ -23,7 +29,8 @@ public class MessageAppController : MonoBehaviour
             thread.transform.SetParent(transform);
             var threadController = thread.GetComponent<MessageThreadController>();
             threadController.MessageThread = messageThread;
-            thread.GetComponent<RectTransform>().localPosition = new Vector3(0, 0, 0);
+            thread.GetComponent<RectTransform>().localPosition = new Vector3(0, rowPointer, 0);
+            rowPointer -= (height + Margin);
         }
     }
 
@@ -45,11 +52,31 @@ public class MessageAppController : MonoBehaviour
         var message = new Message
         {
             Sender = "Mom",
-            SentOn = new System.DateTime(2019, 1, 26),
+            SentOn = new DateTime(2019, 1, 26),
             MessageText = "Come home you awful child"
         };
 
+        var message2 = new Message
+        {
+            Sender = "Mom",
+            SentOn = new DateTime(2019, 1, 27),
+            MessageText = "We have burritos"
+        };
+
+        var thread2 = new MessageThread { Participant = "Bad Coworker" };
+        var comessage = new Message
+        {
+            Sender = "Bad Coworker",
+            SentOn = new DateTime(2019, 01, 26),
+            MessageText = "Hey, are you excited for some unpaid overtime?!"
+        };
+
         thread.Messages.Add(message);
+        thread.Messages.Add(message2);
+
+        thread2.Messages.Add(comessage);
+
         MessageThreads.Add(thread);
+        MessageThreads.Add(thread2);
     }
 }
