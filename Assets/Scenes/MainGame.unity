@@ -390,5 +390,15 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8671612728959773138, guid: f56fef4285e5e493d9066cec53aabe59,
+        type: 3}
+      propertyPath: TopMargin
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 8671612728959773138, guid: f56fef4285e5e493d9066cec53aabe59,
+        type: 3}
+      propertyPath: ButtonMargins
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f56fef4285e5e493d9066cec53aabe59, type: 3}

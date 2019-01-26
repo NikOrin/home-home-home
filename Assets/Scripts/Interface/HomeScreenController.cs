@@ -9,9 +9,15 @@ public class HomeScreenController : MonoBehaviour
 
     public GameObject GenericAppIcon;
 
+    ///Used for the offset from the edge of the top for the battery bar
+    public int TopMargin;
+    public int ButtonMargins;
+
     // Start is called before the first frame update
     void Start()
     {
+        var appFactory = transform.Find("AppFactoryObject").GetComponent<AppFactory>();
+
         var buttonObject = Instantiate(GenericAppIcon);
         var button = buttonObject.GetComponent<Button>();
         button.onClick.AddListener(() => Test(button));
@@ -19,9 +25,12 @@ public class HomeScreenController : MonoBehaviour
         var btnRect = buttonObject.GetComponent<RectTransform>();
         btnRect.localPosition = Vector3.zero;
 
+        button.GetComponent<OpensApp>().AppCanvas = appFactory.MessageAppCanvas;
+
         var text = buttonObject.transform.Find("Text").GetComponent<Text>();
         text.text = "Message App";
         Apps.Add(button);
+
     }
 
     // Update is called once per frame
