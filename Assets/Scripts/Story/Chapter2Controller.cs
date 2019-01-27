@@ -42,7 +42,7 @@ public class Chapter2Controller : StoryController
         AvailableThreads.Add(new MessageThread
         {
             Participant = "Brit",
-            MessageSnippet = "I appreciate it, thanks (:",
+            MessageSnippet = "The usual place.. not sure wha...",
             ThreadPrefab = BritInitial
         });
     }

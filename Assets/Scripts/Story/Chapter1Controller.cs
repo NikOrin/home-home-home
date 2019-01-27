@@ -25,6 +25,8 @@ public class Chapter1Controller : StoryController
 
     public GameObject HREmail;
 
+    public GameObject ToDoList; 
+
     // Start is called before the first frame update
     void Start()
     {
