@@ -96,6 +96,8 @@ public class Chapter1Controller : StoryController
 
     }
 
+
+
     // Update is called once per frame
     void Update()
     {
