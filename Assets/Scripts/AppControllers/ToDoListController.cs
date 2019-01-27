@@ -5,21 +5,27 @@ using UnityEngine.UI;
 
 public class ToDoListController : MonoBehaviour
 {
-	public Panel Story;
 	public Image bkgToChange;
-	public string CurrentState;
+	public Sprite targetImage;
+	public Sprite CurrentImage;
 
     // Start is called before the first frame update
     void Start()
     {
-		bkgToChange = Story.GetComponent<Image>();
+		CurrentImage = bkgToChange.sprite;
     }
 
-	void ChangeImage()
+	void Update()
 	{
-		if(CurrentState != "Nothing")
+	    // Press Space to Change the Sprite of the Image
+		if(Input.GetKey(KeyCode.Space))
 		{
-			bkgToChange.
+			bkgToChange.sprite = targetImage;
 		}
+	}
+
+	void DummyImage()
+	{
+		bkgToChange.sprite = targetImage;
 	}
 }
