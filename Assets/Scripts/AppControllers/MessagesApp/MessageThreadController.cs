@@ -22,4 +22,23 @@ public class MessageThreadController : MonoBehaviour
     {
         
     }
+
+	public void OpenThreadOnClick()
+	{
+		Debug.Log("You are reading the message thread~!");
+
+		// Create a new Panel for Thread. 
+//		GameObject newCanvas = new GameObject("Canvas");
+//		Canvas t = newCanvas.AddComponent<Canvas>();
+//		t.renderMode = RenderMode.ScreenSpaceOverlay;
+//		newCanvas.AddComponent<CanvasScaler>();
+//		newCanvas.AddComponent<GraphicRaycaster>();
+//		GameObject Panel = new GameObject("Panel");
+//		Panel.AddComponent<CanvasRenderer>();
+//		Image i = Panel.AddComponent<Image>();
+//		i.color = Color.white;
+//
+		//Panel.transform
+	   // Panel.transform.SetParent(this.transform, false);
+	}
 }
