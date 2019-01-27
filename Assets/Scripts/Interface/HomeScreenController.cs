@@ -46,11 +46,12 @@ public class HomeScreenController : MonoBehaviour
 
             var opensApp = button.GetComponent<OpensApp>();
             opensApp.HomeButton = HomeButton;
-            opensApp.AppCanvas = appFactory.GetAppCanvas(app).AppCanvas;
-
+            var appInfo = appFactory.GetAppCanvas(app);
+            opensApp.AppCanvas = appInfo.AppCanvas;
+            button.image.sprite = appInfo.AppIconImage;
 
             var text = buttonObject.transform.Find("Text").GetComponent<Text>();
-            text.text = app;
+            text.text = "";
         }
 
     }

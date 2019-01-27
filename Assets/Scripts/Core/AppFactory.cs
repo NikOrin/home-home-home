@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Application;
 
 public class AppFactory : MonoBehaviour
 {
     public GameObject MessageAppCanvas;
+    public Sprite MessageAppIcon;
     public GameObject MapAppCanvas;
     public GameObject ToDoListCanvas;
+    public Sprite ToDoListAppIcon;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +31,8 @@ public class AppFactory : MonoBehaviour
             case "MessagesApp":
                 return new AppButtonInfo
                 {
-                    AppCanvas = MessageAppCanvas
+                    AppCanvas = MessageAppCanvas,
+                    AppIconImage = MessageAppIcon
                 };
             case "MapApp":
                 return new AppButtonInfo
@@ -38,7 +42,8 @@ public class AppFactory : MonoBehaviour
             case "ToDoListApp":
                 return new AppButtonInfo
                 {
-                    AppCanvas = ToDoListCanvas
+                    AppCanvas = ToDoListCanvas,
+                    AppIconImage = ToDoListAppIcon
                 };
         }
         return null;
