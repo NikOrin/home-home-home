@@ -11,6 +11,7 @@ public class HomeScreenController : MonoBehaviour
     public GameObject GenericAppButtonPrefab;
     public GameObject HomeButton;
     //public GameObject StoryObject;
+    public GameObject StoryObject;
     public StoryController StoryController;
 
     public GameObject RedDot;
@@ -33,6 +34,8 @@ public class HomeScreenController : MonoBehaviour
         int width = (int)GenericAppButtonPrefab.GetComponent<RectTransform>().rect.width;
         int columnPointer = -Screen.width / 2 + ButtonMargins / 2 + width/2 + 20;
 
+        if (StoryController == null)
+            StoryController = StoryObject.GetComponent<StoryController>();
         var apps = StoryController.GetAvailableApps();
         Apps = new Dictionary<string, GameObject>();
         foreach (var app in apps)

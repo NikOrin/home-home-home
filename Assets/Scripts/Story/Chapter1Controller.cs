@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,13 +18,22 @@ public class Chapter1Controller : StoryController
     public GameObject ReplyToMom;
     public GameObject FinalConversationWithMom;
 
-    public GameObject InitialAlex;
+    public GameObject AlexInitial;
+    public GameObject AlexFinal;
+
+    public GameObject BritInitial;
 
     public GameObject HREmail;
 
     // Start is called before the first frame update
     void Start()
     {
+        BuildMessages();
+        _homeController = Home.GetComponent<HomeScreenController>();
+        _homeController.StoryController = this;
+    }
+
+    private void BuildMessages(){
         AvailableThreads.Add(new MessageThread
         {
             Participant = "Mom",
@@ -32,8 +41,20 @@ public class Chapter1Controller : StoryController
             StoryKey = "OpenedMomThread",
             ThreadPrefab = MomInitialMessage
         });
-        _homeController = Home.GetComponent<HomeScreenController>();
-        _homeController.StoryController = this;
+
+        AvailableThreads.Add(new MessageThread
+        {
+            Participant = "Alex",
+            MessageSnippet = "you're new to the city so not like y...",
+            ThreadPrefab = AlexInitial
+        });
+
+        AvailableThreads.Add(new MessageThread
+        {
+            Participant = "Brit",
+            MessageSnippet = "I appreciate it, thanks (:",
+            ThreadPrefab = BritInitial
+        });
     }
 
     public override List<string> GetAvailableApps()
@@ -65,6 +86,9 @@ public class Chapter1Controller : StoryController
                 Destroy(gameObject);
                 var newView = Instantiate(FinalConversationWithMom);
                 newView.transform.SetParent(parentCanvas);
+                StartCoroutine(AlexMessagesYou());
+                break;
+            case "End":
                 StartCoroutine(NextChapter());
                 break;
         }
@@ -88,6 +112,16 @@ public class Chapter1Controller : StoryController
             StoryKey = "OpenedHREmail"
         });
 
+    }
+
+    IEnumerator AlexMessagesYou(){
+        yield return new WaitForSeconds(2);
+        var audioSource = transform.Find("MessageReceive").GetComponent<AudioSource>();
+        audioSource.Play(0);
+        _homeController.SetAlertIcon("MessagesApp");
+        var alexThread = AvailableThreads.Where(x => x.Participant == "Alex").First();
+        alexThread.ThreadPrefab = AlexFinal;
+        alexThread.StoryKey = "End";
     }
 
     private IEnumerator NextChapter(){

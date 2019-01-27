@@ -11,7 +11,19 @@ public class Chapter2Controller : StoryController
     // Start is called before the first frame update
 
     public GameObject LastMomMessage;
+
+    public GameObject AlexInitial;
+
+    public GameObject BritInitial;
+
     void Start()
+    {
+        BuildMessages();
+        _homeController = Home.GetComponent<HomeScreenController>();
+        _homeController.StoryController = this;
+    }
+
+    private void BuildMessages()
     {
         AvailableThreads.Add(new MessageThread
         {
@@ -19,8 +31,20 @@ public class Chapter2Controller : StoryController
             MessageSnippet = "Hope your first day went wel...",
             ThreadPrefab = LastMomMessage
         });
-        _homeController = Home.GetComponent<HomeScreenController>();
-        _homeController.StoryController = this;
+
+        AvailableThreads.Add(new MessageThread
+        {
+            Participant = "Alex",
+            MessageSnippet = "okay you didn't reply so i'm...",
+            ThreadPrefab = AlexInitial
+        });
+
+        AvailableThreads.Add(new MessageThread
+        {
+            Participant = "Brit",
+            MessageSnippet = "I appreciate it, thanks (:",
+            ThreadPrefab = BritInitial
+        });
     }
 
     public override List<string> GetAvailableApps()
