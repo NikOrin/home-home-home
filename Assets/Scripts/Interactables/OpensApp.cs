@@ -6,6 +6,7 @@ public class OpensApp : MonoBehaviour
 {
     public GameObject AppCanvas;
     public GameObject HomeButton;
+    public StoryController StoryController;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,11 @@ public class OpensApp : MonoBehaviour
 
     public void OpenAppCanvas()
     {
-        HomeButton.GetComponent<HomeButtonController>().CurrentApp = Instantiate(AppCanvas);
+        var app = Instantiate(AppCanvas);
+        HomeButton.GetComponent<HomeButtonController>().CurrentApp = app;
+        if (app.GetComponent<BaseAppController>() != null)
+        {
+            app.GetComponent<BaseAppController>().StoryController = this.StoryController;
+        }
     }
 }

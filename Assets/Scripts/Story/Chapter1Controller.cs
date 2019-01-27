@@ -2,29 +2,97 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Application.Messages;
+using Application.Email;
+using UnityEngine.SceneManagement;
 
-public class Chapter1Controller : MonoBehaviour
+public class Chapter1Controller : StoryController
 {
     public GameObject Home;
+    private HomeScreenController _homeController;
+
+
+
+    public GameObject MomInitialMessage;
+    public GameObject ReplyToMom;
+    public GameObject FinalConversationWithMom;
+
+    public GameObject InitialAlex;
+
+    public GameObject HREmail;
+
     // Start is called before the first frame update
     void Start()
     {
-
-        SetupAvailableApps();
-        CreateMessages();
+        AvailableThreads.Add(new MessageThread
+        {
+            Participant = "Mom",
+            MessageSnippet = "How are you doing honey? Call me soon.",
+            StoryKey = "OpenedMomThread",
+            ThreadPrefab = MomInitialMessage
+        });
+        _homeController = Home.GetComponent<HomeScreenController>();
+        _homeController.StoryController = this;
     }
 
-    private void SetupAvailableApps()
+    public override List<string> GetAvailableApps()
     {
-        var controller = Home.GetComponent<HomeScreenController>();
-        controller.Apps = new List<string>{
-            "MessagesApp", "MapApp", "ToDoListApp"
+        return new List<string>{
+            "MessagesApp", "ToDoListApp", "EmailApp"
         };
     }
 
-    private void CreateMessages()
+    public override void StoryKeyPointReached(string key, GameObject gameObject = null)
     {
+        Debug.Log("Chapter 1 key element reached");
+        switch(key){
+            case "OpenedMomThread":
+                Debug.Log("Player opened key message from mom");
+                StartCoroutine(GetEmailAlert());
+                break;
+            case "OpenedHREmail":
+                Debug.Log("HR email was opened");
+                _homeController.RemoveAlertIcon("EmailApp");
+                AvailableThreads[0].ThreadPrefab = ReplyToMom;
+                AvailableThreads[0].StoryKey = null;
+                AvailableEmails[0].StoryKey = null;
+                break;
+            case "AskMom":
+                var audio = transform.Find("MessageReply").GetComponent<AudioSource>();
+                audio.Play(0);
+                var parentCanvas = gameObject.transform.parent;
+                Destroy(gameObject);
+                var newView = Instantiate(FinalConversationWithMom);
+                newView.transform.SetParent(parentCanvas);
+                StartCoroutine(NextChapter());
+                break;
+        }
+    }
 
+    public override void SetMessageKey(MessageThreadController messageThreadController)
+    {
+        messageThreadController.MessageThreadKey = "OpenedMomThread";
+    }
+
+    private IEnumerator GetEmailAlert(){
+        yield return new WaitForSeconds(1);
+        var audioSource = transform.Find("EmailReceiveAudio").GetComponent<AudioSource>();
+        audioSource.Play(0);
+        _homeController.SetAlertIcon("EmailApp");
+        AvailableEmails.Add(new Email
+        {
+            Sender = "HR",
+            Subject = "Welcome to Ruckus!",
+            OpenEmail = HREmail,
+            StoryKey = "OpenedHREmail"
+        });
+
+    }
+
+    private IEnumerator NextChapter(){
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("Scenes/Chapter2", LoadSceneMode.Single);
     }
 
     // Update is called once per frame

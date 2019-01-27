@@ -5,10 +5,15 @@ using UnityEngine.UI;
 
 public class HomeScreenController : MonoBehaviour
 {
-    //public List<Button> Apps;
-    public List<string> Apps;
+    public Dictionary<string, GameObject> Apps;
+    public Dictionary<string, GameObject> RedDotAlerts = new Dictionary<string, GameObject>();
+
     public GameObject GenericAppButtonPrefab;
     public GameObject HomeButton;
+    //public GameObject StoryObject;
+    public StoryController StoryController;
+
+    public GameObject RedDot;
 
     //Used for the offset from the edge of the top for the battery bar
     public int TopMargin = 60;
@@ -26,11 +31,11 @@ public class HomeScreenController : MonoBehaviour
         int rowPointer = Screen.height / 2 - TopMargin - height/2;
 
         int width = (int)GenericAppButtonPrefab.GetComponent<RectTransform>().rect.width;
-        int columnPointer = -Screen.width / 2 + ButtonMargins / 2 + width/2;
+        int columnPointer = -Screen.width / 2 + ButtonMargins / 2 + width/2 + 20;
 
-
-
-        foreach(var app in Apps)
+        var apps = StoryController.GetAvailableApps();
+        Apps = new Dictionary<string, GameObject>();
+        foreach (var app in apps)
         {
             Debug.Log("making buttons");
             var buttonObject = Instantiate(GenericAppButtonPrefab);
@@ -46,12 +51,12 @@ public class HomeScreenController : MonoBehaviour
 
             var opensApp = button.GetComponent<OpensApp>();
             opensApp.HomeButton = HomeButton;
+            opensApp.StoryController = StoryController;
             var appInfo = appFactory.GetAppCanvas(app);
             opensApp.AppCanvas = appInfo.AppCanvas;
             button.image.sprite = appInfo.AppIconImage;
 
-            var text = buttonObject.transform.Find("Text").GetComponent<Text>();
-            text.text = "";
+            Apps.Add(app, buttonObject);
         }
 
     }
@@ -67,5 +72,23 @@ public class HomeScreenController : MonoBehaviour
         b.GetComponent<OpensApp>().OpenAppCanvas();
 
         gameObject.SetActive(false);
+    }
+
+    public void SetAlertIcon(string buttonKey)
+    {
+        var button = Apps[buttonKey];
+        var alertIcon = Instantiate(RedDot);
+        var buttonLocation = button.GetComponent<RectTransform>().localPosition;
+        alertIcon.transform.SetParent(transform);
+        alertIcon.GetComponent<RectTransform>().localPosition = new Vector3(buttonLocation.x + 75, buttonLocation.y + 75, buttonLocation.z);
+
+        RedDotAlerts.Add(buttonKey, alertIcon);
+    }
+
+    public void RemoveAlertIcon(string buttonKey)
+    {
+        var icon = RedDotAlerts[buttonKey];
+        RedDotAlerts.Remove(buttonKey);
+        Destroy(icon);
     }
 }

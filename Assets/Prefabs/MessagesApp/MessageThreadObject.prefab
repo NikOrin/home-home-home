@@ -301,3 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83e60365079241d7a7c7e98c9c75fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MessageThreadCanvasPrefab: {fileID: 3367788263439212341, guid: 5b00dd0b309fc40b7af5ee670d2d7465,
+    type: 3}
+  StoryController: {fileID: 0}
+  MessageThreadKey: 

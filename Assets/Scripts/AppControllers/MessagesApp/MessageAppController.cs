@@ -16,11 +16,14 @@ public class MessageAppController : BaseAppController
     {
         //Get messages information from story controller
         //test method for building fake data for now;
-        BuildDummyData();
+        MessageThreads = StoryController.BuildAvailableThreads();
 
-        int height = (int)MessageThreadPrefab.GetComponent<RectTransform>().rect.height;
-        int rowPointer = Screen.height/2 - TopMargin - height/2;
+        BuildMessageThreads();
+    }
 
+    public void BuildMessageThreads()
+    {        int height = (int)MessageThreadPrefab.GetComponent<RectTransform>().rect.height;
+        int rowPointer = Screen.height / 2 - TopMargin - height / 2;
 
         foreach (var messageThread in MessageThreads)
         {
@@ -31,6 +34,9 @@ public class MessageAppController : BaseAppController
             threadController.MessageThread = messageThread;
             thread.GetComponent<RectTransform>().localPosition = new Vector3(0, rowPointer, 0);
             rowPointer -= (height + Margin);
+
+            threadController.StoryController = StoryController;
+
         }
     }
 
@@ -38,45 +44,5 @@ public class MessageAppController : BaseAppController
     void Update()
     {
         
-    }
-
-    private void BuildDummyData()
-    {
-        MessageThreads = new List<MessageThread>();
-
-        var thread = new MessageThread
-        {
-            Participant = "Mom"
-        };
-
-        var message = new Message
-        {
-            Sender = "Mom",
-            SentOn = new DateTime(2019, 1, 26),
-            MessageText = "Come home you awful child"
-        };
-
-        var message2 = new Message
-        {
-            Sender = "Mom",
-            SentOn = new DateTime(2019, 1, 27),
-            MessageText = "We have burritos"
-        };
-
-        var thread2 = new MessageThread { Participant = "Bad Coworker" };
-        var comessage = new Message
-        {
-            Sender = "Bad Coworker",
-            SentOn = new DateTime(2019, 01, 26),
-            MessageText = "Hey, are you excited for some unpaid overtime?!"
-        };
-
-        thread.Messages.Add(message);
-        thread.Messages.Add(message2);
-
-        thread2.Messages.Add(comessage);
-
-        MessageThreads.Add(thread);
-        MessageThreads.Add(thread2);
     }
 }
