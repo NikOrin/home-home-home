@@ -23,7 +23,7 @@ public class MessageAppController : BaseAppController
 
     public void BuildMessageThreads()
     {        int height = (int)MessageThreadPrefab.GetComponent<RectTransform>().rect.height;
-        int rowPointer = Screen.height / 2 - TopMargin - height / 2;
+        int rowPointer = Screen.height / 2 - TopMargin - height / 2 - 100;
 
         foreach (var messageThread in MessageThreads)
         {

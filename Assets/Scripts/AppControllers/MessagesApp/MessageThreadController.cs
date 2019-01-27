@@ -30,10 +30,12 @@ public class MessageThreadController : MonoBehaviour
 	public void OpenThreadOnClick()
 	{
 		Debug.Log("You are reading the message thread~!");
+
         if (!string.IsNullOrEmpty(MessageThread.StoryKey)){
             StoryController.StoryKeyPointReached(MessageThread.StoryKey);
         }
         var thread = Instantiate(MessageThread.ThreadPrefab);
-        thread.transform.SetParent(transform);
-	}
+        thread.transform.SetParent(transform.parent);
+        thread.transform.SetAsLastSibling();
+    }
 }

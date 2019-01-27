@@ -18,7 +18,7 @@ public class ReplyToMom : MonoBehaviour
     }
 
     void ReplyBarOnClick(){
-        var storyController = GetComponentInParent<MessageThreadController>().StoryController;
+        var storyController = transform.parent.GetComponentInParent<MessageAppController>().StoryController;
 
         storyController.StoryKeyPointReached("AskMom", transform.parent.gameObject);
     }
