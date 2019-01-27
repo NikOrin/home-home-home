@@ -16,12 +16,13 @@ public class MessageAppController : BaseAppController
     {
         //Get messages information from story controller
         //test method for building fake data for now;
-        BuildDummyData();
+        MessageThreads = StoryController.BuildAvailableThreads();
 
         int height = (int)MessageThreadPrefab.GetComponent<RectTransform>().rect.height;
         int rowPointer = Screen.height/2 - TopMargin - height/2;
 
-
+        Debug.Log("Message app controller");
+        Debug.Log(StoryController);
         foreach (var messageThread in MessageThreads)
         {
             var thread = Instantiate(MessageThreadPrefab);
@@ -31,6 +32,11 @@ public class MessageAppController : BaseAppController
             threadController.MessageThread = messageThread;
             thread.GetComponent<RectTransform>().localPosition = new Vector3(0, rowPointer, 0);
             rowPointer -= (height + Margin);
+
+            if (StoryController.KeyMessages.Contains(messageThread.Participant))
+                StoryController.SetMessageKey(threadController);
+            threadController.StoryController = StoryController;
+
         }
     }
 

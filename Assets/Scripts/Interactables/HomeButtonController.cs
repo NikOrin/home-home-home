@@ -10,7 +10,8 @@ public class HomeButtonController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.GetComponent<Button>().onClick.AddListener(HomeClick);
+        var button = transform.GetComponent<Button>();
+        button.onClick.AddListener(HomeClick);
     }
 
     // Update is called once per frame
