@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LoanMoAppController : BaseAppController
 {
@@ -11,4 +12,9 @@ public class LoanMoAppController : BaseAppController
     void Start()
     {
     }
+
+	public void PayOnClick()
+	{
+		Debug.Log("Scream");
+	}
 }
