@@ -5,19 +5,21 @@ using UnityEngine;
 using UnityEngine.UI;
 using Application.Messages;
 using Application.Email;
+using UnityEngine.SceneManagement;
 
 public class Chapter1Controller : StoryController
 {
     public GameObject Home;
     private HomeScreenController _homeController;
 
-    public List<MessageThread> AvailableThreads = new List<MessageThread>();
 
-    public List<Email> AvailableEmails = new List<Email>();
 
     public GameObject MomInitialMessage;
     public GameObject ReplyToMom;
     public GameObject FinalConversationWithMom;
+
+    public GameObject InitialAlex;
+
     public GameObject HREmail;
 
     // Start is called before the first frame update
@@ -32,7 +34,6 @@ public class Chapter1Controller : StoryController
         });
         _homeController = Home.GetComponent<HomeScreenController>();
         _homeController.StoryController = this;
-        KeyMessages.Add("Mom");
     }
 
     public override List<string> GetAvailableApps()
@@ -64,6 +65,7 @@ public class Chapter1Controller : StoryController
                 Destroy(gameObject);
                 var newView = Instantiate(FinalConversationWithMom);
                 newView.transform.SetParent(parentCanvas);
+                StartCoroutine(NextChapter());
                 break;
         }
     }
@@ -71,14 +73,6 @@ public class Chapter1Controller : StoryController
     public override void SetMessageKey(MessageThreadController messageThreadController)
     {
         messageThreadController.MessageThreadKey = "OpenedMomThread";
-    }
-
-    public override List<MessageThread> BuildAvailableThreads(){
-        return AvailableThreads;
-    }
-
-    public override List<Email> BuildAvailableEmails(){
-        return AvailableEmails;
     }
 
     private IEnumerator GetEmailAlert(){
@@ -96,7 +90,10 @@ public class Chapter1Controller : StoryController
 
     }
 
-
+    private IEnumerator NextChapter(){
+        yield return new WaitForSeconds(3);
+        SceneManager.LoadScene("Scenes/Chapter2", LoadSceneMode.Single);
+    }
 
     // Update is called once per frame
     void Update()
