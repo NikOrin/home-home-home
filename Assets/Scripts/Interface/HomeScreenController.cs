@@ -59,6 +59,9 @@ public class HomeScreenController : MonoBehaviour
             opensApp.AppCanvas = appInfo.AppCanvas;
             button.image.sprite = appInfo.AppIconImage;
 
+            if (StoryController.HasCustomCallback(app))
+                opensApp.StoryKey = app;
+
             Apps.Add(app, buttonObject);
         }
 
@@ -71,7 +74,6 @@ public class HomeScreenController : MonoBehaviour
 
     private void Test(Button b)
     {
-        Debug.Log("Test button was clicked");
         b.GetComponent<OpensApp>().OpenAppCanvas();
 
         gameObject.SetActive(false);

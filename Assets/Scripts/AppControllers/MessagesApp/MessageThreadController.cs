@@ -36,6 +36,9 @@ public class MessageThreadController : MonoBehaviour
         }
         var thread = Instantiate(MessageThread.ThreadPrefab);
         thread.transform.SetParent(transform.parent);
+        var customListener = thread.transform.Find("ReplyBarButton").GetComponent<CustomListener>();
+        if (customListener != null) customListener.StoryController = StoryController;
+
         thread.transform.SetAsLastSibling();
     }
 }

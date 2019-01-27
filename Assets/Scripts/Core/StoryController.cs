@@ -13,6 +13,8 @@ public class StoryController : MonoBehaviour
 
     public List<Email> AvailableEmails = new List<Email>();
 
+    public GameObject FadeInOut;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -37,4 +39,7 @@ public class StoryController : MonoBehaviour
     public virtual GameObject GetPrefab(string key) { return null; }
 
     public virtual List<string> GetAvailableApps(){return null;}
+
+    public virtual void TriggerCallback(string key, params string[] args){}
+    public virtual bool HasCustomCallback(string key) { return false; }
 }

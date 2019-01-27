@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.024993896}
-  m_SizeDelta: {x: 0, y: 0.050018}
+  m_AnchoredPosition: {x: 0, y: 60.025024}
+  m_SizeDelta: {x: 0, y: -119.94995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &969555921422040055
 CanvasRenderer:
@@ -87,7 +87,6 @@ GameObject:
   - component: {fileID: 7687947519447908549}
   - component: {fileID: 3624728032851580262}
   - component: {fileID: 2956400226867216928}
-  - component: {fileID: 6211648661369738681}
   m_Layer: 5
   m_Name: ToDoCh1
   m_TagString: Untagged
@@ -176,21 +175,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &6211648661369738681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7765410012051823025}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fea2839652c0a1439dcb6a67509f29e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bkgToChange: {fileID: 0}
-  targetImage: {fileID: 0}
-  CurrentImage: {fileID: 0}
 --- !u!1 &8557911666012569842
 GameObject:
   m_ObjectHideFlags: 0
@@ -297,10 +281,10 @@ RectTransform:
   m_Father: {fileID: 24408142750352161}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.124000005}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -147.7}
-  m_SizeDelta: {x: 0, y: -11.4}
+  m_AnchoredPosition: {x: 0, y: -148.62}
+  m_SizeDelta: {x: 0, y: -9.5538}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8557911667668286745
 CanvasRenderer:
@@ -331,11 +315,11 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: 2e5049a3bb129483392f2d749a28b4ae, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillMethod: 1
+  m_FillAmount: 0.547
   m_FillClockwise: 1
-  m_FillOrigin: 0
+  m_FillOrigin: 1
   m_UseSpriteMesh: 0
