@@ -8,7 +8,7 @@ namespace Application.Messages
     {
         public string Participant;
         public string LatestMessage => Messages.First().MessageText.Substring(0, Math.Min(Messages.First().MessageText.Length, 50));
-
+        public string PhoneNumber;
         public List<Message> Messages = new List<Message>();
     }
 }

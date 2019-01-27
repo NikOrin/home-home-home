@@ -301,3 +301,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c83e60365079241d7a7c7e98c9c75fa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MessageThreadCanvasPrefab: {fileID: 0}

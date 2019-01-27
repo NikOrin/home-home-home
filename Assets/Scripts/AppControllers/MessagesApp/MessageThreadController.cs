@@ -8,6 +8,7 @@ public class MessageThreadController : MonoBehaviour
 {
     public MessageThread MessageThread;
 
+    public GameObject MessageThreadCanvasPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,7 +27,7 @@ public class MessageThreadController : MonoBehaviour
 	public void OpenThreadOnClick()
 	{
 		Debug.Log("You are reading the message thread~!");
-
+        Instantiate(MessageThreadCanvasPrefab);
 		// Create a new Panel for Thread. 
 //		GameObject newCanvas = new GameObject("Canvas");
 //		Canvas t = newCanvas.AddComponent<Canvas>();
