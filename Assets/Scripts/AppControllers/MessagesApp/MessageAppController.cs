@@ -18,11 +18,13 @@ public class MessageAppController : BaseAppController
         //test method for building fake data for now;
         MessageThreads = StoryController.BuildAvailableThreads();
 
-        int height = (int)MessageThreadPrefab.GetComponent<RectTransform>().rect.height;
-        int rowPointer = Screen.height/2 - TopMargin - height/2;
+        BuildMessageThreads();
+    }
 
-        Debug.Log("Message app controller");
-        Debug.Log(StoryController);
+    public void BuildMessageThreads()
+    {        int height = (int)MessageThreadPrefab.GetComponent<RectTransform>().rect.height;
+        int rowPointer = Screen.height / 2 - TopMargin - height / 2;
+
         foreach (var messageThread in MessageThreads)
         {
             var thread = Instantiate(MessageThreadPrefab);
@@ -33,8 +35,6 @@ public class MessageAppController : BaseAppController
             thread.GetComponent<RectTransform>().localPosition = new Vector3(0, rowPointer, 0);
             rowPointer -= (height + Margin);
 
-            if (StoryController.KeyMessages.Contains(messageThread.Participant))
-                StoryController.SetMessageKey(threadController);
             threadController.StoryController = StoryController;
 
         }
@@ -44,45 +44,5 @@ public class MessageAppController : BaseAppController
     void Update()
     {
         
-    }
-
-    private void BuildDummyData()
-    {
-        MessageThreads = new List<MessageThread>();
-
-        var thread = new MessageThread
-        {
-            Participant = "Mom"
-        };
-
-        var message = new Message
-        {
-            Sender = "Mom",
-            SentOn = new DateTime(2019, 1, 26),
-            MessageText = "Come home you awful child"
-        };
-
-        var message2 = new Message
-        {
-            Sender = "Mom",
-            SentOn = new DateTime(2019, 1, 27),
-            MessageText = "We have burritos"
-        };
-
-        var thread2 = new MessageThread { Participant = "Bad Coworker" };
-        var comessage = new Message
-        {
-            Sender = "Bad Coworker",
-            SentOn = new DateTime(2019, 01, 26),
-            MessageText = "Hey, are you excited for some unpaid overtime?!"
-        };
-
-        thread.Messages.Add(message);
-        thread.Messages.Add(message2);
-
-        thread2.Messages.Add(comessage);
-
-        MessageThreads.Add(thread);
-        MessageThreads.Add(thread2);
     }
 }

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using UnityEngine;
 
 namespace Application.Messages
 {
@@ -8,7 +6,7 @@ namespace Application.Messages
     {
         public string Participant;
         public string MessageSnippet;
-        public string PhoneNumber;
-        public List<Message> Messages = new List<Message>();
+        public GameObject ThreadPrefab;
+        public string StoryKey;
     }
 }

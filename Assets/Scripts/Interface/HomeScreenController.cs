@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class HomeScreenController : MonoBehaviour
 {
     public Dictionary<string, GameObject> Apps;
+    public Dictionary<string, GameObject> RedDotAlerts = new Dictionary<string, GameObject>();
 
     public GameObject GenericAppButtonPrefab;
     public GameObject HomeButton;
@@ -30,7 +31,7 @@ public class HomeScreenController : MonoBehaviour
         int rowPointer = Screen.height / 2 - TopMargin - height/2;
 
         int width = (int)GenericAppButtonPrefab.GetComponent<RectTransform>().rect.width;
-        int columnPointer = -Screen.width / 2 + ButtonMargins / 2 + width/2;
+        int columnPointer = -Screen.width / 2 + ButtonMargins / 2 + width/2 + 20;
 
         var apps = StoryController.GetAvailableApps();
         Apps = new Dictionary<string, GameObject>();
@@ -80,5 +81,14 @@ public class HomeScreenController : MonoBehaviour
         var buttonLocation = button.GetComponent<RectTransform>().localPosition;
         alertIcon.transform.SetParent(transform);
         alertIcon.GetComponent<RectTransform>().localPosition = new Vector3(buttonLocation.x + 75, buttonLocation.y + 75, buttonLocation.z);
+
+        RedDotAlerts.Add(buttonKey, alertIcon);
+    }
+
+    public void RemoveAlertIcon(string buttonKey)
+    {
+        var icon = RedDotAlerts[buttonKey];
+        RedDotAlerts.Remove(buttonKey);
+        Destroy(icon);
     }
 }

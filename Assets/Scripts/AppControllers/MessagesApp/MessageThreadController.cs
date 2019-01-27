@@ -10,7 +10,7 @@ public class MessageThreadController : MonoBehaviour
 
     public GameObject MessageThreadCanvasPrefab;
     public StoryController StoryController;
-    //public StoryMaster StoryController;
+
     public string MessageThreadKey;
     // Start is called before the first frame update
     void Start()
@@ -30,10 +30,10 @@ public class MessageThreadController : MonoBehaviour
 	public void OpenThreadOnClick()
 	{
 		Debug.Log("You are reading the message thread~!");
-        if (!string.IsNullOrEmpty(MessageThreadKey)){
-            StoryController.StoryKeyPointReached(MessageThreadKey);
+        if (!string.IsNullOrEmpty(MessageThread.StoryKey)){
+            StoryController.StoryKeyPointReached(MessageThread.StoryKey);
         }
-        var thread = Instantiate(MessageThreadCanvasPrefab);
+        var thread = Instantiate(MessageThread.ThreadPrefab);
         thread.transform.SetParent(transform);
 	}
 }
