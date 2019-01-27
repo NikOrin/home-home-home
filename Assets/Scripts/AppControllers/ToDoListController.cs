@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ToDoListController : MonoBehaviour
+public class ToDoListController : BaseAppController
 {
 	public Image bkgToChange;
 	public Sprite targetImage;
@@ -12,9 +12,8 @@ public class ToDoListController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-		CurrentImage = bkgToChange.sprite;
-
+        var toDoList = Instantiate(StoryController.GetPrefab("ToDoList"));
+        toDoList.transform.SetParent(transform);
     }
 
 	void Update()

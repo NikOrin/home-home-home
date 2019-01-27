@@ -66,6 +66,15 @@ public class Chapter1Controller : StoryController
         };
     }
 
+    public override GameObject GetPrefab(string key)
+    {
+        switch(key){
+            case "ToDoList":
+                return ToDoList;
+        }
+        return null;
+    }
+
     public override void StoryKeyPointReached(string key, GameObject gameObject = null)
     {
         Debug.Log("Chapter 1 key element reached");

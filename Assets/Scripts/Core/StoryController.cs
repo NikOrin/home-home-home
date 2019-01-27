@@ -34,5 +34,7 @@ public class StoryController : MonoBehaviour
 
     public virtual List<Email> BuildAvailableEmails() { return AvailableEmails; }
 
+    public virtual GameObject GetPrefab(string key) { return null; }
+
     public virtual List<string> GetAvailableApps(){return null;}
 }
