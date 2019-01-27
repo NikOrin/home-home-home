@@ -3,15 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Application.Story;
 using Application.Messages;
 
 public class Chapter1Controller : StoryController
 {
     public GameObject Home;
     private HomeScreenController _homeController;
-
-    public StoryMaster StoryMaster;
 
     public Sprite YouGotMailIcon;
 
