@@ -6,21 +6,16 @@ using UnityEngine.UI;
 public class LoanMoPay : MonoBehaviour
 {
 	public GameObject button;
-
-    // Start is called before the first frame update
-    void Start()
-	{
-    }
+	public Text txt;
 
 	public void PayOnClick()
 	{
+		txt = button.GetComponentInChildren<Text>();
+
 		if(button.tag == "Right")
 		{	
+			txt.text = " $$ JULIE $$ ";
 			Debug.Log("DING");
-		}
-		else
-		{
-			Debug.Log("SCREAM");
 		}
 	}
 }
