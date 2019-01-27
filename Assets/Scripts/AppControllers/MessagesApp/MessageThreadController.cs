@@ -33,7 +33,8 @@ public class MessageThreadController : MonoBehaviour
         if (!string.IsNullOrEmpty(MessageThreadKey)){
             StoryController.StoryKeyPointReached(MessageThreadKey);
         }
-        Instantiate(MessageThreadCanvasPrefab);
+        var thread = Instantiate(MessageThreadCanvasPrefab);
+        thread.transform.SetParent(transform);
 		// Create a new Panel for Thread. 
 //		GameObject newCanvas = new GameObject("Canvas");
 //		Canvas t = newCanvas.AddComponent<Canvas>();

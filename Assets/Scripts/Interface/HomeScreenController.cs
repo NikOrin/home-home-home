@@ -12,6 +12,8 @@ public class HomeScreenController : MonoBehaviour
     //public GameObject StoryObject;
     public StoryController StoryController;
 
+    public GameObject RedDot;
+
     //Used for the offset from the edge of the top for the battery bar
     public int TopMargin = 60;
     //used for the offset from the bottom edge of the screen (for the home button)
@@ -69,5 +71,14 @@ public class HomeScreenController : MonoBehaviour
         b.GetComponent<OpensApp>().OpenAppCanvas();
 
         gameObject.SetActive(false);
+    }
+
+    public void SetAlertIcon(string buttonKey)
+    {
+        var button = Apps[buttonKey];
+        var alertIcon = Instantiate(RedDot);
+        var buttonLocation = button.GetComponent<RectTransform>().localPosition;
+        alertIcon.transform.SetParent(transform);
+        alertIcon.GetComponent<RectTransform>().localPosition = new Vector3(buttonLocation.x + 75, buttonLocation.y + 75, buttonLocation.z);
     }
 }

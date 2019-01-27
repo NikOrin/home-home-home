@@ -229,16 +229,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1291859499, guid: f56fef4285e5e493d9066cec53aabe59, type: 3}
-      propertyPath: EmailAppCanvas
-      value: 
-      objectReference: {fileID: 3665512960433854047, guid: a6c52d924543846088f8dddeb5dbf28f,
-        type: 3}
-    - target: {fileID: 1291859499, guid: f56fef4285e5e493d9066cec53aabe59, type: 3}
-      propertyPath: EmailAppIcon
-      value: 
-      objectReference: {fileID: 21300000, guid: ce65a5b6231c5074e978d9fa37d359d1,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f56fef4285e5e493d9066cec53aabe59, type: 3}
 --- !u!1 &1488965054

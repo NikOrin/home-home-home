@@ -243,14 +243,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227e86dc009ce45a6ba9f4c42aa95182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Apps:
-  - MessagesApp
-  - MapApp
-  - ToDoListApp
   GenericAppButtonPrefab: {fileID: 8578269785595427955, guid: 25f22074863e8430e9bbf69ac15cc3af,
     type: 3}
   HomeButton: {fileID: 0}
   StoryController: {fileID: 0}
+  RedDot: {fileID: 3975006012694583121, guid: 74f144816b7d04ef799102c5aad7f3d9, type: 3}
   TopMargin: 60
   BottomMargin: 0
   ButtonMargins: 10
@@ -268,3 +265,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KeyMessages: []
   Home: {fileID: 0}
+  YouGotMailIcon: {fileID: 0}

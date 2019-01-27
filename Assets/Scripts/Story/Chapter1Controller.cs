@@ -37,8 +37,7 @@ public class Chapter1Controller : StoryController
         switch(key){
             case "OpenedMomThread":
                 Debug.Log("Player opened key message from mom");
-                var emailButton = _homeController.Apps["EmailApp"];
-                emailButton.GetComponent<Button>().GetComponent<Image>().sprite = YouGotMailIcon;
+                StartCoroutine(GetEmailAlert());
                 break;
         }
     }
@@ -52,6 +51,13 @@ public class Chapter1Controller : StoryController
         return new List<MessageThread>{
             new MessageThread{ Participant="Mom", MessageSnippet="How are you doing honey? Call me soon."}
         };
+    }
+
+    private IEnumerator GetEmailAlert(){
+        yield return new WaitForSeconds(1);
+        var audioSource = transform.GetComponent<AudioSource>();
+        audioSource.Play(0);
+        _homeController.SetAlertIcon("EmailApp");
     }
 
     // Update is called once per frame
