@@ -8,9 +8,15 @@ public class AppFactory : MonoBehaviour
 {
     public GameObject MessageAppCanvas;
     public Sprite MessageAppIcon;
+
     public GameObject MapAppCanvas;
+    public Sprite MapAppIcon;
+
     public GameObject ToDoListCanvas;
     public Sprite ToDoListAppIcon;
+
+    public GameObject EmailAppCanvas;
+    public Sprite EmailAppIcon;
 
     // Start is called before the first frame update
     void Start()
@@ -37,13 +43,20 @@ public class AppFactory : MonoBehaviour
             case "MapApp":
                 return new AppButtonInfo
                 {
-                    AppCanvas = MapAppCanvas
+                    AppCanvas = MapAppCanvas,
+                    AppIconImage = MapAppIcon
                 };
             case "ToDoListApp":
                 return new AppButtonInfo
                 {
                     AppCanvas = ToDoListCanvas,
                     AppIconImage = ToDoListAppIcon
+                };
+            case "EmailApp":
+                return new AppButtonInfo
+                {
+                    AppCanvas = EmailAppCanvas,
+                    AppIconImage = EmailAppIcon
                 };
         }
         return null;

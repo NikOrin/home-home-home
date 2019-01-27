@@ -7,7 +7,7 @@ namespace Application.Messages
     public class MessageThread
     {
         public string Participant;
-        public string LatestMessage => Messages.First().MessageText.Substring(0, Math.Min(Messages.First().MessageText.Length, 50));
+        public string MessageSnippet;
         public string PhoneNumber;
         public List<Message> Messages = new List<Message>();
     }

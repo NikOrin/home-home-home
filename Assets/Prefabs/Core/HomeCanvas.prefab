@@ -45,10 +45,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MessageAppCanvas: {fileID: 7106359629369996777, guid: 31533d5fffa934d1c9416b51df2f3840,
     type: 3}
+  MessageAppIcon: {fileID: 21300000, guid: 3f6099cc2911118419ffa2ec9ba2d08f, type: 3}
   MapAppCanvas: {fileID: 1625975907287165945, guid: 75d8b2d0404cd4e9683a16f279d285b3,
     type: 3}
+  MapAppIcon: {fileID: 21300000, guid: ee794ca91972443438ab335d15866cf4, type: 3}
   ToDoListCanvas: {fileID: 8725626481471876954, guid: 7497529c2a45ed94bb17e138b4aaa477,
     type: 3}
+  ToDoListAppIcon: {fileID: 21300000, guid: 30ea8eb7cd600e748a1deca8cc38396e, type: 3}
+  EmailAppCanvas: {fileID: 3665512960433854047, guid: a6c52d924543846088f8dddeb5dbf28f,
+    type: 3}
+  EmailAppIcon: {fileID: 21300000, guid: ce65a5b6231c5074e978d9fa37d359d1, type: 3}
 --- !u!1 &6774830406178926372
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,8 +89,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 60}
+  m_SizeDelta: {x: 0, y: -120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &321104882123944661
 CanvasRenderer:
@@ -107,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.21529014, g: 0.6244924, b: 0.7735849, a: 1}
+  m_Color: {r: 0.77254903, g: 0.2835631, b: 0.21568626, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -136,6 +142,7 @@ GameObject:
   - component: {fileID: 8671612728959773149}
   - component: {fileID: 8671612728959773150}
   - component: {fileID: 8671612728959773138}
+  - component: {fileID: 896683418}
   m_Layer: 5
   m_Name: HomeCanvas
   m_TagString: Untagged
@@ -236,9 +243,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227e86dc009ce45a6ba9f4c42aa95182, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Apps: []
+  Apps:
+  - MessagesApp
+  - MapApp
+  - ToDoListApp
   GenericAppButtonPrefab: {fileID: 8578269785595427955, guid: 25f22074863e8430e9bbf69ac15cc3af,
     type: 3}
+  HomeButton: {fileID: 0}
+  StoryController: {fileID: 0}
   TopMargin: 60
   BottomMargin: 0
-  ButtonMargins: 0
+  ButtonMargins: 10
+--- !u!114 &896683418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8671612728959773151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e101a03ee8dd94adb8626c013ff87215, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  KeyMessages: []
+  Home: {fileID: 0}

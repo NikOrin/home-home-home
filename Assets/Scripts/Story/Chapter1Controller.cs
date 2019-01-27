@@ -2,29 +2,56 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using Application.Story;
+using Application.Messages;
 
-public class Chapter1Controller : MonoBehaviour
+public class Chapter1Controller : StoryController
 {
     public GameObject Home;
+    private HomeScreenController _homeController;
+
+    public StoryMaster StoryMaster;
+
+    public Sprite YouGotMailIcon;
+
     // Start is called before the first frame update
     void Start()
     {
+        _homeController = Home.GetComponent<HomeScreenController>();
+        _homeController.StoryController = this;
 
-        SetupAvailableApps();
-        CreateMessages();
+        KeyMessages.Add("Mom");
     }
 
-    private void SetupAvailableApps()
+    public override List<string> GetAvailableApps()
     {
-        var controller = Home.GetComponent<HomeScreenController>();
-        controller.Apps = new List<string>{
-            "MessagesApp", "MapApp", "ToDoListApp"
+        return new List<string>{
+            "MessagesApp", "MapApp", "ToDoListApp", "EmailApp"
         };
     }
 
-    private void CreateMessages()
+    public override void StoryKeyPointReached(string key)
     {
+        Debug.Log("Chapter 1 key element reached");
+        switch(key){
+            case "OpenedMomThread":
+                Debug.Log("Player opened key message from mom");
+                var emailButton = _homeController.Apps["EmailApp"];
+                emailButton.GetComponent<Button>().GetComponent<Image>().sprite = YouGotMailIcon;
+                break;
+        }
+    }
 
+    public override void SetMessageKey(MessageThreadController messageThreadController)
+    {
+        messageThreadController.MessageThreadKey = "OpenedMomThread";
+    }
+
+    public override List<MessageThread> BuildAvailableThreads(){
+        return new List<MessageThread>{
+            new MessageThread{ Participant="Mom", MessageSnippet="How are you doing honey? Call me soon."}
+        };
     }
 
     // Update is called once per frame

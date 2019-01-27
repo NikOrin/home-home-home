@@ -9,14 +9,17 @@ public class MessageThreadController : MonoBehaviour
     public MessageThread MessageThread;
 
     public GameObject MessageThreadCanvasPrefab;
+    public StoryController StoryController;
+    //public StoryMaster StoryController;
+    public string MessageThreadKey;
     // Start is called before the first frame update
     void Start()
     {
         var participant = transform.Find("ParticipantLabel").GetComponent<Text>();
         participant.text = MessageThread.Participant;
-        var latestMessage = transform.Find("MessageSnippet").GetComponent<Text>();
-        latestMessage.text = MessageThread.LatestMessage;
-        }
+        var messageSnippet = transform.Find("MessageSnippet").GetComponent<Text>();
+        messageSnippet.text = MessageThread.MessageSnippet;
+    }
 
     // Update is called once per frame
     void Update()
@@ -27,6 +30,9 @@ public class MessageThreadController : MonoBehaviour
 	public void OpenThreadOnClick()
 	{
 		Debug.Log("You are reading the message thread~!");
+        if (!string.IsNullOrEmpty(MessageThreadKey)){
+            StoryController.StoryKeyPointReached(MessageThreadKey);
+        }
         Instantiate(MessageThreadCanvasPrefab);
 		// Create a new Panel for Thread. 
 //		GameObject newCanvas = new GameObject("Canvas");
