@@ -16,7 +16,7 @@ public class MessageAppController : BaseAppController
     {
         //Get messages information from story controller
         //test method for building fake data for now;
-        //BuildDummyData();
+        BuildDummyData();
 
         int height = (int)MessageThreadPrefab.GetComponent<RectTransform>().rect.height;
         int rowPointer = Screen.height/2 - TopMargin - height/2;

@@ -9,6 +9,7 @@ public class Chapter1Controller : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         SetupAvailableApps();
         CreateMessages();
     }
@@ -17,7 +18,7 @@ public class Chapter1Controller : MonoBehaviour
     {
         var controller = Home.GetComponent<HomeScreenController>();
         controller.Apps = new List<string>{
-            "MessagesApp", "MapApp"
+            "MessagesApp", "MapApp", "ToDoListApp"
         };
     }
 

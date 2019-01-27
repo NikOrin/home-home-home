@@ -8,8 +8,7 @@ public class HomeScreenController : MonoBehaviour
     //public List<Button> Apps;
     public List<string> Apps;
     public GameObject GenericAppButtonPrefab;
-
-    public GameObject StoryController;
+    public GameObject HomeButton;
 
     //Used for the offset from the edge of the top for the battery bar
     public int TopMargin = 60;
@@ -30,9 +29,12 @@ public class HomeScreenController : MonoBehaviour
         int columnPointer = -Screen.width / 2 + ButtonMargins / 2 + width/2;
 
 
+
         foreach(var app in Apps)
         {
+            Debug.Log("making buttons");
             var buttonObject = Instantiate(GenericAppButtonPrefab);
+            buttonObject.name = $"{app}Button";
             var button = buttonObject.GetComponent<Button>();
             button.onClick.AddListener(() => Test(button));
             buttonObject.transform.SetParent(transform);
@@ -42,7 +44,10 @@ public class HomeScreenController : MonoBehaviour
             //rowPointer -= (height + ButtonMargins);
             columnPointer += (width + ButtonMargins);
 
-            button.GetComponent<OpensApp>().AppCanvas = appFactory.GetAppCanvas(app).AppCanvas;
+            var opensApp = button.GetComponent<OpensApp>();
+            opensApp.HomeButton = HomeButton;
+            opensApp.AppCanvas = appFactory.GetAppCanvas(app).AppCanvas;
+
 
             var text = buttonObject.transform.Find("Text").GetComponent<Text>();
             text.text = app;

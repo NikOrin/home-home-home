@@ -7,6 +7,7 @@ public class AppFactory : MonoBehaviour
 {
     public GameObject MessageAppCanvas;
     public GameObject MapAppCanvas;
+    public GameObject ToDoListCanvas;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +35,11 @@ public class AppFactory : MonoBehaviour
                 {
                     AppCanvas = MapAppCanvas
                 };
-
+            case "ToDoListApp":
+                return new AppButtonInfo
+                {
+                    AppCanvas = ToDoListCanvas
+                };
         }
         return null;
     }
