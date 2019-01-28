@@ -38,6 +38,7 @@ public class HomeScreenController : MonoBehaviour
             StoryController = StoryObject.GetComponent<StoryController>();
         var apps = StoryController.GetAvailableApps();
         Apps = new Dictionary<string, GameObject>();
+        var columnCount = 0;
         foreach (var app in apps)
         {
             Debug.Log("making buttons");
@@ -49,7 +50,6 @@ public class HomeScreenController : MonoBehaviour
             var btnRect = buttonObject.GetComponent<RectTransform>();
             btnRect.localPosition = new Vector3(columnPointer, rowPointer, 0);
 
-            //rowPointer -= (height + ButtonMargins);
             columnPointer += (width + ButtonMargins);
 
             var opensApp = button.GetComponent<OpensApp>();
@@ -63,8 +63,14 @@ public class HomeScreenController : MonoBehaviour
                 opensApp.StoryKey = app;
 
             Apps.Add(app, buttonObject);
+            columnCount++;
+            if (columnCount > 3)
+            {
+                rowPointer -= (height + ButtonMargins);
+                columnPointer = -Screen.width / 2 + ButtonMargins / 2 + width / 2 + 20;
+                columnCount = 0;
+            }
         }
-
     }
 
     // Update is called once per frame

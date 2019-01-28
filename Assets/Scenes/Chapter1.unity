@@ -284,6 +284,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   KeyMessages: []
   KeyEmails: []
+  FadeInOut: {fileID: 0}
+  MomIcon: {fileID: 21300000, guid: 3396efb05b98f4ded8acf98523af97eb, type: 3}
+  AlexIcon: {fileID: 21300000, guid: a150ea596fe0c4881ba8763a91ee8664, type: 3}
+  BritIcon: {fileID: 21300000, guid: 0659e2a5579e94a199223401deecc9d3, type: 3}
   Home: {fileID: 896683417}
   MomInitialMessage: {fileID: 8535806430782212499, guid: 95f1049690a2b4a2d9b31428ef6509a7,
     type: 3}
@@ -872,6 +876,11 @@ PrefabInstance:
       propertyPath: StoryController
       value: 
       objectReference: {fileID: 178138124}
+    - target: {fileID: 8671612728959773138, guid: f56fef4285e5e493d9066cec53aabe59,
+        type: 3}
+      propertyPath: StoryObject
+      value: 
+      objectReference: {fileID: 178138123}
     - target: {fileID: 1271569056103599651, guid: f56fef4285e5e493d9066cec53aabe59,
         type: 3}
       propertyPath: m_Sprite

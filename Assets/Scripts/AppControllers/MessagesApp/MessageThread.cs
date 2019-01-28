@@ -7,6 +7,7 @@ namespace Application.Messages
         public string Participant;
         public string MessageSnippet;
         public GameObject ThreadPrefab;
+        public Sprite ProfilePic;
         public string StoryKey;
     }
 }

@@ -30,6 +30,7 @@ public class Chapter1Controller : StoryController
     // Start is called before the first frame update
     void Start()
     {
+        SetProfilePictures();
         BuildMessages();
         _homeController = Home.GetComponent<HomeScreenController>();
         _homeController.StoryController = this;
@@ -41,21 +42,24 @@ public class Chapter1Controller : StoryController
             Participant = "Mom",
             MessageSnippet = "How are you doing honey? Call me soon.",
             StoryKey = "OpenedMomThread",
-            ThreadPrefab = MomInitialMessage
+            ThreadPrefab = MomInitialMessage,
+            ProfilePic = MomIcon
         });
 
         AvailableThreads.Add(new MessageThread
         {
             Participant = "Alex",
             MessageSnippet = "you're new to the city so not like y...",
-            ThreadPrefab = AlexInitial
+            ThreadPrefab = AlexInitial,
+            ProfilePic = AlexIcon
         });
 
         AvailableThreads.Add(new MessageThread
         {
             Participant = "Brit",
             MessageSnippet = "I appreciate it, thanks (:",
-            ThreadPrefab = BritInitial
+            ThreadPrefab = BritInitial,
+            ProfilePic = BritIcon
         });
     }
 

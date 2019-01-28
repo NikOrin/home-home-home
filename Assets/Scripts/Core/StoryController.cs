@@ -15,6 +15,10 @@ public class StoryController : MonoBehaviour
 
     public GameObject FadeInOut;
 
+    public Sprite MomIcon;
+    public Sprite AlexIcon;
+    public Sprite BritIcon;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,4 +46,11 @@ public class StoryController : MonoBehaviour
 
     public virtual void TriggerCallback(string key, params string[] args){}
     public virtual bool HasCustomCallback(string key) { return false; }
+
+    protected void SetProfilePictures()
+    {
+        MomIcon = Resources.Load<Sprite>("mamamia-icon");
+        AlexIcon = Resources.Load<Sprite>("Alex");
+        BritIcon = Resources.Load<Sprite>("brit");
+    }
 }

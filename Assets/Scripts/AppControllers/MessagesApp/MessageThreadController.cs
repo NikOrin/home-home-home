@@ -19,6 +19,8 @@ public class MessageThreadController : MonoBehaviour
         participant.text = MessageThread.Participant;
         var messageSnippet = transform.Find("MessageSnippet").GetComponent<Text>();
         messageSnippet.text = MessageThread.MessageSnippet;
+        var profilePic = transform.Find("ProfilePic").GetComponent<Image>();
+        profilePic.sprite = MessageThread.ProfilePic;
     }
 
     // Update is called once per frame

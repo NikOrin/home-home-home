@@ -55,6 +55,9 @@ MonoBehaviour:
   EmailAppCanvas: {fileID: 3665512960433854047, guid: a6c52d924543846088f8dddeb5dbf28f,
     type: 3}
   EmailAppIcon: {fileID: 21300000, guid: ce65a5b6231c5074e978d9fa37d359d1, type: 3}
+  LoanMoPrefab: {fileID: 6792978336139499249, guid: 8904a1beb0a3acc488a0ba3eb3d380fa,
+    type: 3}
+  LoanMoIcon: {fileID: 21300000, guid: 9f2aef7d0da8ede46ba8c39e3e57c5e2, type: 3}
 --- !u!1 &6774830406178926372
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,6 +249,7 @@ MonoBehaviour:
   GenericAppButtonPrefab: {fileID: 8578269785595427955, guid: 25f22074863e8430e9bbf69ac15cc3af,
     type: 3}
   HomeButton: {fileID: 0}
+  StoryObject: {fileID: 0}
   StoryController: {fileID: 0}
   RedDot: {fileID: 3975006012694583121, guid: 74f144816b7d04ef799102c5aad7f3d9, type: 3}
   TopMargin: 60

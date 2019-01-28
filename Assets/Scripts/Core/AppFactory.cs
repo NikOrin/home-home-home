@@ -18,6 +18,9 @@ public class AppFactory : MonoBehaviour
     public GameObject EmailAppCanvas;
     public Sprite EmailAppIcon;
 
+    public GameObject LoanMoPrefab;
+    public Sprite LoanMoIcon;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +60,12 @@ public class AppFactory : MonoBehaviour
                 {
                     AppCanvas = EmailAppCanvas,
                     AppIconImage = EmailAppIcon
+                };
+            case "LoanMoApp":
+                return new AppButtonInfo
+                {
+                    AppCanvas = LoanMoPrefab,
+                    AppIconImage = LoanMoIcon
                 };
         }
         return null;

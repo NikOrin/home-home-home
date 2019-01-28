@@ -12,6 +12,7 @@ public class ToDoListController : BaseAppController
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log(StoryController);
         var toDoList = Instantiate(StoryController.GetPrefab("ToDoList"));
         toDoList.transform.SetParent(transform);
     }

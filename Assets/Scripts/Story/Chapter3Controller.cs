@@ -1,22 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using Application.Messages;
-using Application.Email;
-using System.Linq;
-using UnityEngine.SceneManagement;
+using UnityEngine;
 
-public class Chapter2Controller : StoryController
+public class Chapter3Controller : StoryController
 {
     public GameObject Home;
     private HomeScreenController _homeController;
     // Start is called before the first frame update
 
-    public GameObject LastMomMessage;
-
+    public GameObject MomInitial;
     public GameObject AlexInitial;
-    public GameObject AlexMultipleChoice;
-
     public GameObject BritInitial;
 
     public GameObject ToDoList;
@@ -27,6 +21,7 @@ public class Chapter2Controller : StoryController
         BuildMessages();
         _homeController = Home.GetComponent<HomeScreenController>();
         _homeController.StoryController = this;
+
     }
 
     private void BuildMessages()
@@ -35,7 +30,7 @@ public class Chapter2Controller : StoryController
         {
             Participant = "Mom",
             MessageSnippet = "Hope your first day went wel...",
-            ThreadPrefab = LastMomMessage,
+            ThreadPrefab = MomInitial,
             ProfilePic = MomIcon
         });
 
@@ -46,6 +41,7 @@ public class Chapter2Controller : StoryController
             ThreadPrefab = AlexInitial,
             ProfilePic = AlexIcon
         });
+
         AvailableThreads.Add(new MessageThread
         {
             Participant = "Brit",
@@ -58,7 +54,7 @@ public class Chapter2Controller : StoryController
     public override List<string> GetAvailableApps()
     {
         return new List<string>{
-            "MessagesApp", "ToDoListApp", "EmailApp", "MapApp"
+            "MessagesApp", "ToDoListApp", "EmailApp", "MapApp", "LoanMoApp"
         };
     }
 
@@ -70,32 +66,6 @@ public class Chapter2Controller : StoryController
                 return ToDoList;
         }
         return null;
-    }
-
-    public override void TriggerCallback(string key, params string[] args)
-    {
-        switch(key){
-            case "MapApp":
-                var alex = AvailableThreads.First(x => x.Participant == "Alex");
-                alex.ThreadPrefab = AlexMultipleChoice;
-                break;
-            case "LocationSelected":
-                var fade = Instantiate(FadeInOut);
-
-                fade.transform.SetAsLastSibling();
-                if (args[0] == "Correct")
-                    fade.GetComponent<FadeOut>().Scene = "Scenes/Chapter3";
-                else fade.GetComponent<FadeOut>().Scene = "Scenes/Chapter2";
-                break;
-        }
-    }
-
-    public override bool HasCustomCallback(string key) {
-        switch(key){
-            case "MapApp":
-                return true;
-        }
-        return false;
     }
 
     // Update is called once per frame
